@@ -1,57 +1,61 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { saveAs } from 'file-saver';
 
-export default class Project extends Component {
+export default class Extras extends Component {
   back = (e) => {
     e.preventDefault();
     this.props.prevStep();
   };
 
-  continue = (e) => {
+  formSubmit = (e) => {
     e.preventDefault();
+    this.props.submitted();
     this.props.nextStep();
+
+    const data = this.props.values;
+
+    axios
+      .post('http://localhost:5000/create-pdf', data)
+      .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
+      .then((res) => {
+        const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+
+        saveAs(pdfBlob, 'Resume.pdf');
+      });
+
+    e.target.reset();
   };
 
   render() {
     const { values, handleChange } = this.props;
+
     return (
       <div className='card animated fadeIn'>
         <div className='card-body'>
-          <h3 className='card-title'>Projects</h3>
+          <h3 className='card-title'>Miscellaneous</h3>
           <hr />
         </div>
-        <form onSubmit={this.continue}>
+        <form onSubmit={this.formSubmit}>
           <div className='row col-lg-10 mx-auto'>
-            <div className='col-lg-6 text-left'>
+            <div className='col-lg-6 md-form'>
               <input
                 type='text'
-                name='projectTitle1'
-                placeholder='Title*'
+                name='extras1'
+                placeholder='Languages*'
                 className='form-control p-2'
-                defaultValue={values.projectTitle1}
+                defaultValue={values.extras1}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className='col-lg-6 text-left'>
+            <div className='col-lg-6 md-form'>
               <input
                 type='text'
-                name='projectLink1'
-                placeholder='Link'
+                name='extras2'
+                placeholder='Hobbies*'
                 className='form-control p-2'
-                defaultValue={values.projectLink1}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <br />
-          <div className='row col-lg-10 mx-auto'>
-            <div className='col-lg-12 text-left'>
-              <input
-                type='text'
-                name='projectDescription1'
-                placeholder='Description*'
-                className='form-control p-2'
-                defaultValue={values.projectDescription1}
+                defaultValue={values.extras2}
                 onChange={handleChange}
                 required
               />
@@ -59,37 +63,38 @@ export default class Project extends Component {
           </div>
           <br />
           <div className='row col-lg-10 mx-auto'>
-            <div className='col-lg-6 text-left'>
+            <div className='col-lg-6 md-form'>
               <input
                 type='text'
-                name='projectTitle2'
-                placeholder='Title*'
+                name='extras3'
+                placeholder='Activity/Achievement*'
                 className='form-control p-2'
-                defaultValue={values.projectTitle2}
+                defaultValue={values.extras3}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className='col-lg-6 text-left'>
+            <div className='col-lg-6 md-form'>
               <input
                 type='text'
-                name='projectLink2'
-                placeholder='Link'
+                name='extras4'
+                placeholder='Activity/Achievement*'
                 className='form-control p-2'
-                defaultValue={values.projectLink2}
+                defaultValue={values.extras4}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
           <br />
           <div className='row col-lg-10 mx-auto'>
-            <div className='col-lg-12 text-left'>
+            <div className='col-lg-12 md-form'>
               <input
                 type='text'
-                name='projectDescription2'
-                placeholder='Description*'
+                name='extras5'
                 className='form-control p-2'
-                defaultValue={values.projectDescription2}
+                placeholder='Activity/Achievement*'
+                defaultValue={values.extras5}
                 onChange={handleChange}
                 required
               />
@@ -105,7 +110,7 @@ export default class Project extends Component {
               Back
             </button>
             <button type='submit' className='btn btn-dark m-2 mt-0 mb-0'>
-              Next
+              Download PDF <i className='fas fa-download ml-1'></i>
             </button>
           </div>
           <br />

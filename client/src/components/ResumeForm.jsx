@@ -4,6 +4,8 @@ import PersonalDetails from './PersonalDetails';
 import Education from './Education';
 import Experience from './Experience';
 import Project from './Project';
+import Extras from './Extras';
+import Success from './Success';
 
 export default class ResumeForm extends Component {
   state = {
@@ -40,18 +42,12 @@ export default class ResumeForm extends Component {
     projectTitle2: '',
     projectLink2: '',
     projectDescription2: '',
-    projectTitle3: '',
-    projectLink3: '',
-    projectDescription3: '',
     // Extras
     extras1: '',
     extras2: '',
     extras3: '',
     extras4: '',
     extras5: '',
-    extras6: '',
-    extras7: '',
-    extras8: '',
   };
 
   nextStep = () => {
@@ -137,10 +133,33 @@ export default class ResumeForm extends Component {
         );
 
       case 5:
-        return <div>Extra activities page</div>;
+        return (
+          <div className='pt-4 mt-5'>
+            <div className='container col-lg-8 mx-auto text-center'>
+              <Extras
+                values={this.state}
+                prevStep={this.prevStep}
+                nextStep={this.nextStep}
+                submitted={this.submitted}
+                handleChange={this.handleChange}
+              />
+            </div>
+            <br />
+          </div>
+        );
 
       case 6:
-        return <div>download page</div>;
+        return (
+          <div className='pt-4 mt-5'>
+            <div className='container col-lg-8 mx-auto text-center'>
+              <Success />
+            </div>
+            <br />
+          </div>
+        );
+
+      default:
+        return <div>Error</div>;
     }
   }
 }

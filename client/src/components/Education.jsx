@@ -16,7 +16,7 @@ export default class Education extends Component {
     return (
       <div className='card animated fadeIn'>
         <div className='card-body'>
-          <h3 className='card-title'>Education Info</h3>
+          <h3 className='card-title'>Education</h3>
           <hr />
         </div>
         <form onSubmit={this.continue}>
@@ -27,7 +27,7 @@ export default class Education extends Component {
                 name='college'
                 placeholder='College/University*'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.college}
+                defaultValue={values.college}
                 onChange={handleChange}
                 required
               />
@@ -38,7 +38,7 @@ export default class Education extends Component {
                 name='collegeYear'
                 placeholder='Year*'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.collegeYear}
+                defaultValue={values.collegeYear}
                 onChange={handleChange}
                 required
               />
@@ -49,9 +49,7 @@ export default class Education extends Component {
                 name='collegeQualification'
                 placeholder='Qualification*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.collegeQualification
-                }
+                defaultValue={values.collegeQualification}
                 onChange={handleChange}
                 required
               />
@@ -65,9 +63,7 @@ export default class Education extends Component {
                 name='collegeDescription'
                 placeholder='Description*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.collegeDescription
-                }
+                defaultValue={values.collegeDescription}
                 onChange={handleChange}
                 required
               />
@@ -83,7 +79,7 @@ export default class Education extends Component {
                 name='school'
                 placeholder='School'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.school}
+                defaultValue={values.school}
                 onChange={handleChange}
               />
             </div>
@@ -93,7 +89,7 @@ export default class Education extends Component {
                 name='schoolYear'
                 placeholder='Year'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.schoolYear}
+                defaultValue={values.schoolYear}
                 onChange={handleChange}
               />
             </div>
@@ -103,9 +99,7 @@ export default class Education extends Component {
                 name='schoolQualification'
                 placeholder='Qualification'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.schoolQualification
-                }
+                defaultValue={values.schoolQualification}
                 onChange={handleChange}
               />
             </div>
@@ -118,9 +112,7 @@ export default class Education extends Component {
                 name='schoolDescription'
                 placeholder='Description'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.schoolDescription
-                }
+                defaultValue={values.schoolDescription}
                 onChange={handleChange}
               />
             </div>

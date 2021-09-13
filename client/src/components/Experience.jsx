@@ -17,7 +17,7 @@ export default class Experience extends Component {
     return (
       <div className='card animated fadeIn'>
         <div className='card-body'>
-          <h3 className='card-title'>Experience Info</h3>
+          <h3 className='card-title'>Experience</h3>
           <hr />
         </div>
         <form onSubmit={this.continue}>
@@ -26,11 +26,9 @@ export default class Experience extends Component {
               <input
                 type='text'
                 name='experienceOrganization1'
-                placeholder='Institute/Organisation*'
+                placeholder='Organisation*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experienceOrganization1
-                }
+                defaultValue={values.experienceOrganization1}
                 onChange={handleChange}
                 required
               />
@@ -41,9 +39,7 @@ export default class Experience extends Component {
                 name='experiencePosition1'
                 placeholder='Position*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experiencePosition1
-                }
+                defaultValue={values.experiencePosition1}
                 onChange={handleChange}
                 required
               />
@@ -54,9 +50,7 @@ export default class Experience extends Component {
                 name='experienceDuration1'
                 placeholder='Duration*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experienceDuration1
-                }
+                defaultValue={values.experienceDuration1}
                 onChange={handleChange}
                 required
               />
@@ -70,9 +64,7 @@ export default class Experience extends Component {
                 name='experienceDescription1'
                 placeholder='Description*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experienceDescription1
-                }
+                defaultValue={values.experienceDescription1}
                 onChange={handleChange}
                 required
               />
@@ -86,11 +78,9 @@ export default class Experience extends Component {
               <input
                 type='text'
                 name='experienceOrganization2'
-                placeholder='Institute/Organisation*'
+                placeholder='Organisation*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experienceOrganization2
-                }
+                defaultValue={values.experienceOrganization2}
                 onChange={handleChange}
                 required
               />
@@ -101,9 +91,7 @@ export default class Experience extends Component {
                 name='experiencePosition2'
                 placeholder='Position*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experiencePosition2
-                }
+                defaultValue={values.experiencePosition2}
                 onChange={handleChange}
                 required
               />
@@ -114,9 +102,7 @@ export default class Experience extends Component {
                 name='experienceDuration2'
                 placeholder='Duration*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experienceDuration2
-                }
+                defaultValue={values.experienceDuration2}
                 onChange={handleChange}
                 required
               />
@@ -130,9 +116,7 @@ export default class Experience extends Component {
                 name='experienceDescription2'
                 placeholder='Description*'
                 className='form-control p-2'
-                defaultValue={
-                  values.status === 1 ? '' : values.experienceDescription2
-                }
+                defaultValue={values.experienceDescription2}
                 onChange={handleChange}
                 required
               />

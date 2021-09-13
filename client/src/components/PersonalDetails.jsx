@@ -23,7 +23,7 @@ export default class PersonalDetails extends Component {
                 placeholder='Name*'
                 className='form-control p-2'
                 onChange={handleChange}
-                defaultValue={values.status === 1 ? '' : values.name}
+                defaultValue={values.name}
                 required
               />
             </div>
@@ -34,7 +34,7 @@ export default class PersonalDetails extends Component {
                 placeholder='Email*'
                 className='form-control p-2'
                 onChange={handleChange}
-                defaultValue={values.status === 1 ? '' : values.email}
+                defaultValue={values.email}
                 required
               />
             </div>
@@ -45,7 +45,7 @@ export default class PersonalDetails extends Component {
                 placeholder='Mobile*'
                 className='form-control p-2'
                 onChange={handleChange}
-                defaultValue={values.status === 1 ? '' : values.phone}
+                defaultValue={values.phone}
                 required
               />
             </div>
@@ -58,7 +58,7 @@ export default class PersonalDetails extends Component {
                 name='github'
                 placeholder='Github'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.github}
+                defaultValue={values.github}
                 onChange={handleChange}
               />
             </div>
@@ -68,7 +68,7 @@ export default class PersonalDetails extends Component {
                 name='linkedin'
                 placeholder='Linkedin'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.linkedin}
+                defaultValue={values.linkedin}
                 onChange={handleChange}
               />
             </div>
@@ -81,7 +81,7 @@ export default class PersonalDetails extends Component {
                 name='skills'
                 placeholder='Skills* (Separate each skill with a space and a comma)'
                 className='form-control p-2'
-                defaultValue={values.status === 1 ? '' : values.skills}
+                defaultValue={values.skills}
                 onChange={handleChange}
               />
             </div>

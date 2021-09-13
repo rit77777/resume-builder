@@ -6,7 +6,7 @@ export default function App() {
     <div>
       <div className='col-lg-8 mx-auto text-center mt-5'>
         <h1>
-          <b>Let's generate your Resume!</b>
+          <b>Let's Create Your Resume!</b>
         </h1>
         <p className='lead'>
           Please provide accurate and clear description wherever necessary.
