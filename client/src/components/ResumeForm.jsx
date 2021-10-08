@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import PersonalDetails from './PersonalDetails';
 import Education from './Education';
@@ -7,17 +7,16 @@ import Project from './Project';
 import Extras from './Extras';
 import Success from './Success';
 
-export default class ResumeForm extends Component {
-  state = {
-    step: 1,
-    status: 0,
+const ResumeForm = () => {
+  const [step, setStep] = useState(1);
+  const [status, setStatus] = useState(0);
+  const [values, setValues] = useState({
     name: '',
     email: '',
     phone: '',
     github: '',
     linkedin: '',
     skills: '',
-    // education
     college: '',
     collegeQualification: '',
     collegeYear: '',
@@ -26,7 +25,6 @@ export default class ResumeForm extends Component {
     schoolQualification: '',
     schoolYear: '',
     schoolDescription: '',
-    // experience (*optional? maybe)
     experienceOrganization1: '',
     experiencePosition1: '',
     experienceDescription1: '',
@@ -35,135 +33,128 @@ export default class ResumeForm extends Component {
     experiencePosition2: '',
     experienceDescription2: '',
     experienceDuration2: '',
-    // Projects
     projectTitle1: '',
     projectLink1: '',
     projectDescription1: '',
     projectTitle2: '',
     projectLink2: '',
     projectDescription2: '',
-    // Extras
     extras1: '',
     extras2: '',
     extras3: '',
     extras4: '',
     extras5: '',
+  });
+
+  const nextStep = () => {
+    setStep(step + 1);
   };
 
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step + 1 });
+  const prevStep = () => {
+    setStep(step - 1);
   };
 
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step - 1 });
+  const submitted = () => {
+    setStatus(status + 1);
   };
 
-  submitted = () => {
-    const { status } = this.state;
-    this.setState({ status: status + 1 });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   };
 
-  handleChange = ({ target: { value, name } }) => {
-    this.setState({ [name]: value });
-  };
-
-  render() {
-    const { step } = this.state;
-
-    switch (step) {
-      case 1:
-        return (
-          <div className='pt-4 mt-5'>
-            <div className='container col-lg-8 mx-auto text-center'>
-              <PersonalDetails
-                values={this.state}
-                nextStep={this.nextStep}
-                handleChange={this.handleChange}
-              />
-            </div>
-            <br />
+  switch (step) {
+    case 1:
+      return (
+        <div className='pt-4 mt-5'>
+          <div className='container col-lg-8 mx-auto text-center'>
+            <PersonalDetails
+              values={values}
+              nextStep={nextStep}
+              handleChange={handleChange}
+            />
           </div>
-        );
+          <br />
+        </div>
+      );
 
-      case 2:
-        return (
-          <div className='pt-4 mt-5'>
-            <div className='container col-lg-8 mx-auto text-center'>
-              <Education
-                values={this.state}
-                prevStep={this.prevStep}
-                nextStep={this.nextStep}
-                handleChange={this.handleChange}
-              />
-            </div>
-            <br />
+    case 2:
+      return (
+        <div className='pt-4 mt-5'>
+          <div className='container col-lg-8 mx-auto text-center'>
+            <Education
+              values={values}
+              prevStep={prevStep}
+              nextStep={nextStep}
+              handleChange={handleChange}
+            />
           </div>
-        );
+          <br />
+        </div>
+      );
 
-      case 3:
-        return (
-          <div className='pt-4 mt-5'>
-            <div className='container col-lg-8 mx-auto text-center'>
-              <Experience
-                values={this.state}
-                prevStep={this.prevStep}
-                nextStep={this.nextStep}
-                handleChange={this.handleChange}
-              />
-            </div>
-            <br />
+    case 3:
+      return (
+        <div className='pt-4 mt-5'>
+          <div className='container col-lg-8 mx-auto text-center'>
+            <Experience
+              values={values}
+              prevStep={prevStep}
+              nextStep={nextStep}
+              handleChange={handleChange}
+            />
           </div>
-        );
+          <br />
+        </div>
+      );
 
-      case 4:
-        return (
-          <div className='pt-4 mt-5'>
-            <div className='container col-lg-8 mx-auto text-center'>
-              <Project
-                values={this.state}
-                prevStep={this.prevStep}
-                nextStep={this.nextStep}
-                handleChange={this.handleChange}
-              />
-            </div>
-            <br />
+    case 4:
+      return (
+        <div className='pt-4 mt-5'>
+          <div className='container col-lg-8 mx-auto text-center'>
+            <Project
+              values={values}
+              prevStep={prevStep}
+              nextStep={nextStep}
+              handleChange={handleChange}
+            />
           </div>
-        );
+          <br />
+        </div>
+      );
 
-      case 5:
-        return (
-          <div className='pt-4 mt-5'>
-            <div className='container col-lg-8 mx-auto text-center'>
-              <Extras
-                values={this.state}
-                prevStep={this.prevStep}
-                nextStep={this.nextStep}
-                submitted={this.submitted}
-                handleChange={this.handleChange}
-              />
-            </div>
-            <br />
+    case 5:
+      return (
+        <div className='pt-4 mt-5'>
+          <div className='container col-lg-8 mx-auto text-center'>
+            <Extras
+              values={values}
+              prevStep={prevStep}
+              nextStep={nextStep}
+              submitted={submitted}
+              handleChange={handleChange}
+            />
           </div>
-        );
+          <br />
+        </div>
+      );
 
-      case 6:
-        return (
-          <div className='pt-4 mt-5'>
-            <div className='container col-lg-8 mx-auto text-center'>
-              <Success />
-            </div>
-            <br />
+    case 6:
+      return (
+        <div className='pt-4 mt-5'>
+          <div className='container col-lg-8 mx-auto text-center'>
+            <Success />
           </div>
-        );
+          <br />
+        </div>
+      );
 
-      default:
-        return <div>Error</div>;
-    }
+    default:
+      return <div>Error</div>;
   }
-}
+};
 
+export default ResumeForm;
 /*
 
 PersonalDetails: name, email, phone, github, linkedin.
